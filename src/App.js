@@ -4,41 +4,70 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button'
 
 export function Form(){
+  const [ input,setInput ] = useState(); // para recibir entradas de los input
+  const [status,setStatus] = useState('initial'); // check when status completed
+
+
+  function handleSubmit(event) {
+    event.preventDefault();// evita comportamiento default del form
+  }
+
+  function fill(){
+
+  }
+
+  function random(){
+
+  }
+
+  function reset(){
+    // asignar valores inputs a campos vacios
+   return setStatus('initial');// Verifica si es correcta la sintaxis
+  }
+
 
   return (
-    <div id="form">
+    <div id="form" onSubmit={handleSubmit}>
       <h2>Fill the form</h2>
       <div id="fill">
         <div id="fill_left">
-          <TextField id="standard-basic" label="To" variant="standard" />
-          <TextField id="standard-basic" label="From" variant="standard" />
-          <TextField id="standard-basic" label="Action Requring Apology" variant="standard" />
-          <TextField id="standard-basic" label="Select Option" variant="standard" />
-          <TextField id="standard-basic" label="Consequence of your action" variant="standard" />
-          <TextField id="standard-basic" label="Your Intention" variant="standard" />
+          <TextField id="uno" label="To" variant="standard" type="text"/>
+          <TextField id="dos" label="From" variant="standard" type="text"/>
+          <TextField id="tres" label="Action Requring Apology" variant="standard" type="text"/>
+          <TextField id="cuatro" label="Select Option" variant="standard" type="text"/>
+          <TextField id="cinco" label="Consequence of your action" variant="standard" type="text"/>
+          <TextField id="seis" label="Your Intention" variant="standard" type="text"/>
         </div>
         <div id="fill_right">
-          <TextField id="standard-basic" label="Percived Motive" variant="standard" />
-          <TextField id="standard-basic" label="Adjetive" variant="standard" />
-          <TextField id="standard-basic" label="Proposed Solution" variant="standard" />
-          <TextField id="standard-basic" label="Request for other party" variant="standard" />
-          <TextField id="standard-basic" label="Relationship to reason" variant="standard" />
-          <TextField id="standard-basic" label="Your name" variant="standard" />
+          <TextField id="siete" label="Percived Motive" variant="standard" type="text"/>
+          <TextField id="ocho" label="Adjetive" variant="standard" type="text"/>
+          <TextField id="nueve" label="Proposed Solution" variant="standard" type="text"/>
+          <TextField id="diez" label="Request for other party" variant="standard" type="text"/>
+          <TextField id="once" label="Relationship to reason" variant="standard" type="text"/>
+          <TextField id="doce" label="Your name" variant="standard" type="text"/>
         </div>
       </div>
+
       < div id="fill_buttons">
-        <Button variant="contained" className="btn" sx={{
+        <Button onClick={reset} variant="contained" className="btn" sx={{
           width: 200,
           backgroundColor: 'red',
           marginTop:'40px',
           marginRight:'30px',
         }}>Reset</Button>
-        <Button variant="contained"sx={{
+        <Button onSubmit={random} variant="contained"sx={{
           width: 200,
           backgroundColor: 'Green',
           marginTop:'40px',
           marginLeft:'30px',
-        }} >Generate</Button></div>
+        }} >Random</Button>
+        <Button onSubmit={fill} variant="contained"sx={{
+          width: 200,
+          backgroundColor: 'Blue',
+          marginTop:'40px',
+          marginLeft:'30px',
+        }} >Fill</Button>
+        </div>
         
     </div>
   )
@@ -46,7 +75,7 @@ export function Form(){
 }
 
 function Header() {
-  const [status,setStatus] = useState('initial'); // status completed
+  
   return (
     <div id="title">
       <div id="title_top">

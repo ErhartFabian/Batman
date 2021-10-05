@@ -22,6 +22,9 @@ code {
   border-radius: 10px;
   padding: 4vh;
   margin: 4vh;
+  width:60vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 #form{
   border: 1px solid;
