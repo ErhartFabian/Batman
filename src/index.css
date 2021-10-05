@@ -46,7 +46,6 @@ code {
 
 #title_down_left{
   margin-bottom:10px;
-  ;
 }
 
 #title_down_right{}
@@ -93,6 +92,13 @@ input{
   justify-content: center;
 }
 .btn{
-  margin: 20px;
-  
+  margin: 20px; 
+}
+
+.show{
+  display: inherit;
+}
+
+.hide{
+  display: none;
 }

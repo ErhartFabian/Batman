@@ -7,8 +7,8 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <Form />
-    <Header />
-    <Letter />
+    {/* <Header />
+    <Letter /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
