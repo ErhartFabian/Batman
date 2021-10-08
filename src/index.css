@@ -102,3 +102,11 @@ input{
 .hide{
   display: none;
 }
+
+/* #img{
+  border: 5px solid gold;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content:center;
+} */

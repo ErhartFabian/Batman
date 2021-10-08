@@ -1,7 +1,11 @@
 import React,{useState, useRef} from 'react';
-import ReactDOM from 'react-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import html2canvas from 'html2canvas';
+
+
+
+
 
 export function Form(){
     //Bancos de Respuestas para random
@@ -170,11 +174,16 @@ export function Form(){
    })
   }
 
+  const ss = useRef(); //apunta al area que se tomara img
+  const img = useRef(); //lugar en el DOM donde se posiciona la imagen
+
   function print(){
-    
+    html2canvas(ss.current).then(canvas => {
+      img.current.appendChild(canvas)
+    }); 
   }
 
-
+  
   return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -205,7 +214,8 @@ export function Form(){
             marginTop:'40px',
             marginRight:'30px',
           }}>Reset</Button>
-          <Button onClick={random} variant="contained"sx={{
+
+          <Button onClick={random} disabled={status}  variant="contained"sx={{
             width: 200,
             backgroundColor: 'Green',
             marginTop:'40px',
@@ -218,39 +228,47 @@ export function Form(){
             marginTop:'40px',
             marginLeft:'30px',
           }} >Generate</Button>
-          <Button  variant="contained"sx={{ //Debería ser onSubmit
+          
+          <Button onClick={print} disabled={!status} variant="contained"  sx={{ //Debería ser onSubmit
             width: 200,
             backgroundColor: 'Gray',
             marginTop:'40px',
             marginLeft:'30px',
           }} >Print</Button>
 
+
           </div>
         </form>
-
-        <div id="title" className={status === true ? "show" : "hide"}>
-          <div id="title_top">
-            <h2>FORMAL APOLOGY</h2>
-          </div>
-          <div id="title_down"> 
-            <div id="title_down_left">
-              <label>To: {answers.uno}</label>
+        <div ref={ss} className={status === true ? "show" : "hide"}>
+          <div id="title" >
+            <div id="title_top">
+              <h2>FORMAL APOLOGY</h2>
             </div>
-            <div id="title_down_right">
-              <label>From: {answers.dos}</label>
+            <div id="title_down"> 
+              <div id="title_down_left">
+                <label>To: {answers.uno}</label>
+              </div>
+              <div id="title_down_right">
+                <label>From: {answers.dos}</label>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div id="letter" className={status === true ? "show" : "hide"}>
-           <p>It has come to my attention that my action of <b>(1){answers.tres}</b> colud be seen as <b>(2){answers.cuatro}</b> I never intended to <b>(3){answers.cinco}</b>. 
-           I want you to understand that I was merely trying to <b>(4){answers.seis}</b>, tough I can see now that it may appear that I was <b>(5){answers.siete}</b>. 
-           Please accept my <b>(6){answers.ocho}</b> apology. Moving forward, I will attemp to <b>(7){answers.nueve}</b>. That said, I would very much apreciate it if you <b>(8){answers.diez}</b>. 
-           Sincerely, your <b>(9){answers.once}</b>, <b>(10){answers.doce}</b>.</p>
-        </div>
 
+          
+          <div  id="letter"  >
+            <p>It has come to my attention that my action of <b>(1){answers.tres}</b> colud be seen as <b>(2){answers.cuatro}</b> I never intended to <b>(3){answers.cinco}</b>. 
+            I want you to understand that I was merely trying to <b>(4){answers.seis}</b>, tough I can see now that it may appear that I was <b>(5){answers.siete}</b>. 
+            Please accept my <b>(6){answers.ocho}</b> apology. Moving forward, I will attemp to <b>(7){answers.nueve}</b>. That said, I would very much apreciate it if you <b>(8){answers.diez}</b>. 
+            Sincerely, your <b>(9){answers.once}</b>, <b>(10){answers.doce}</b>.</p>
+          </div>
+        </div>  
+       
+        <div id="img" ref={img}></div>
+          
         </div>
   )
 }
+
+
 
 export default Form;
